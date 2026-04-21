@@ -2,13 +2,13 @@
 
 public class Solver
 {
-    public double Epsilon => 1e-9;
+    private const double _epsilon = 1e-9;
 
     public double[] Solve(double a, double b, double c)
     {
         if (!double.IsFinite(a))
             throw new ArgumentException("а должно быть корректным числом");
-        if (Math.Abs(a) < Epsilon)
+        if (Math.Abs(a) < _epsilon)
             throw new ArgumentException("a не может быть равно 0");
         if (!double.IsFinite(b))
             throw new ArgumentException("b должно быть корректным числом");
@@ -17,9 +17,11 @@ public class Solver
 
         var discriminant = b * b - 4 * a * c;
 
-        if (discriminant < -Epsilon)
+        if (!double.IsFinite(discriminant))
+            throw new ArgumentException("Дискриминант вышел за диапазон double");
+        if (discriminant < -_epsilon)
             return [];
-        if (Math.Abs(discriminant) < Epsilon)
+        if (Math.Abs(discriminant) < _epsilon)
             discriminant = 0;
 
         var x1 = (-b + Math.Sqrt(discriminant)) / (2 * a);
