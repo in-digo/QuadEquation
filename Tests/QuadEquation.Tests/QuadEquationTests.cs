@@ -46,4 +46,15 @@ public class QuadEquationTests
         Assert.Equal(2, roots.Length);
         Assert.True(Math.Abs(roots[0] - roots[1]) < _epsilon);
     }
+
+    [Fact]
+    public void Solve_ThrowsArgumentException_WhenAIsZero()
+    {
+        //Arrange
+        var solver = new Solver();
+
+        //Act + Assert
+        Assert.Throws<ArgumentException>(() => solver.Solve(0, 1, 1));              //а ровно 0
+        Assert.Throws<ArgumentException>(() => solver.Solve(_epsilon / 2, 1, 1));   //а меньше epsilon
+    }
 }
