@@ -6,8 +6,14 @@ public class Solver
 
     public double[] Solve(double a, double b, double c)
     {
+        if (!double.IsFinite(a))
+            throw new ArgumentException("а должно быть корректным числом");
         if (Math.Abs(a) < Epsilon)
             throw new ArgumentException("a не может быть равно 0");
+        if (!double.IsFinite(b))
+            throw new ArgumentException("b должно быть корректным числом");
+        if (!double.IsFinite(c))
+            throw new ArgumentException("c должно быть корректным числом");
 
         var discriminant = b * b - 4 * a * c;
 
