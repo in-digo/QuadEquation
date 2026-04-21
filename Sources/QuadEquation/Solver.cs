@@ -2,17 +2,18 @@
 
 public class Solver
 {
+    public double Epsilon => 1e-9;
+
     public double[] Solve(double a, double b, double c)
     {
-        const double epsilon = 1e-9;
-        if (Math.Abs(a) < epsilon)
+        if (Math.Abs(a) < Epsilon)
             throw new ArgumentException("a не может быть равно 0");
 
         var discriminant = b * b - 4 * a * c;
 
-        if (discriminant < -epsilon)
+        if (discriminant < -Epsilon)
             return [];
-        if (Math.Abs(discriminant) < epsilon)
+        if (Math.Abs(discriminant) < Epsilon)
             discriminant = 0;
 
         var x1 = (-b + Math.Sqrt(discriminant)) / (2 * a);
