@@ -53,4 +53,20 @@ public class QuadEquationTests
         Assert.Throws<ArgumentException>(() => solver.Solve(0, 1, 1));              //а ровно 0
         Assert.Throws<ArgumentException>(() => solver.Solve(solver.Epsilon / 2, 1, 1));   //а меньше epsilon
     }
+
+    [Theory]
+    [InlineData(double.NaN, 1, 1)]
+    [InlineData(double.PositiveInfinity, 1, 1)]
+    [InlineData(double.NegativeInfinity, 1, 1)]
+    [InlineData(1, double.NaN, 1)]
+    [InlineData(1, double.PositiveInfinity, 1)]
+    [InlineData(1, double.NegativeInfinity, 1)]
+    [InlineData(1, 1, double.NaN)]
+    [InlineData(1, 1, double.PositiveInfinity)]
+    [InlineData(1, 1, double.NegativeInfinity)]
+    public void Solve_ThrowsArgumentException_WhenCoeffNotCorrect(double a, double b, double c)
+    {
+        var solver = new Solver();
+        Assert.Throws<ArgumentException>(() => solver.Solve(a, b, c));
+    }
 }
