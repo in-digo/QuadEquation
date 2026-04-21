@@ -29,6 +29,8 @@ public class QuadEquationTests
         //Assert
         Assert.Equal(2, roots.Length);
         Assert.True(Math.Abs(roots[0] - roots[1]) > _epsilon);
+        Assert.Equal(1.0, roots[0], _epsilon);
+        Assert.Equal(-1.0, roots[1], _epsilon);
     }
 
     [Fact]
@@ -43,6 +45,8 @@ public class QuadEquationTests
         //Assert
         Assert.Equal(2, roots.Length);
         Assert.True(Math.Abs(roots[0] - roots[1]) < _epsilon);
+        Assert.Equal(-1.0, roots[0], _epsilon);
+        Assert.Equal(-1.0, roots[1], _epsilon);
     }
 
     [Fact]
