@@ -32,4 +32,18 @@ public class QuadEquationTests
         Assert.Equal(2, roots.Length);
         Assert.True(Math.Abs(roots[0] - roots[1]) > _epsilon);
     }
+
+    [Fact]
+    public void Solve_OneRoot_WhenDiscriminantIsZero()
+    {
+        //Arrange
+        var solver = new Solver();
+
+        //Act
+        var roots = solver.Solve(1, 2, 1); //x^2 + 2x + 1 = 0
+
+        //Assert
+        Assert.Equal(2, roots.Length);
+        Assert.True(Math.Abs(roots[0] - roots[1]) < _epsilon);
+    }
 }
