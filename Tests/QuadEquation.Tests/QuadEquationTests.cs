@@ -40,7 +40,7 @@ public class QuadEquationTests
         var solver = new Solver();
 
         //Act
-        var roots = solver.Solve(1, 2, 1); //x^2 + 2x + 1 = 0
+        var roots = solver.Solve(1, 2, 1 - _epsilon / 8); //x^2 + 2x + почти 1 = 0
 
         //Assert
         Assert.Equal(2, roots.Length);

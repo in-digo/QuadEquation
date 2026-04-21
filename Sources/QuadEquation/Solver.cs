@@ -10,8 +10,10 @@ public class Solver
 
         var discriminant = b * b - 4 * a * c;
 
-        if (discriminant < 0)
+        if (discriminant < -epsilon)
             return [];
+        if (Math.Abs(discriminant) < epsilon)
+            discriminant = 0;
 
         var x1 = (-b + Math.Sqrt(discriminant)) / (2 * a);
         var x2 = (-b - Math.Sqrt(discriminant)) / (2 * a);
