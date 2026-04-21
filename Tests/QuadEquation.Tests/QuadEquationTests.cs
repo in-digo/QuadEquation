@@ -4,6 +4,8 @@ namespace QuadEquation.Tests;
 
 public class QuadEquationTests
 {
+    private const double _epsilon = 1e-9;
+
     [Fact]
     public void Solve_NoRoots_WhenDiscriminantIsNegative()
     {
@@ -15,5 +17,19 @@ public class QuadEquationTests
 
         //Assert
         Assert.Empty(roots);
+    }
+
+    [Fact]
+    public void Solve_TwoRoots_WhenDiscriminantIsPositive()
+    {
+        //Arrange
+        var solver = new Solver();
+
+        //Act
+        var roots = solver.Solve(1, 0, -1); //x^2  - 1 = 0
+
+        //Assert
+        Assert.Equal(2, roots.Length);
+        Assert.True(Math.Abs(roots[0] - roots[1]) > _epsilon);
     }
 }
