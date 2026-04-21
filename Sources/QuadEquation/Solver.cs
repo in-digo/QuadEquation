@@ -4,6 +4,10 @@ public class Solver
 {
     public double[] Solve(double a, double b, double c)
     {
+        const double epsilon = 1e-9;
+        if (Math.Abs(a) < epsilon)
+            throw new ArgumentException("a не может быть равно 0");
+
         var discriminant = b * b - 4 * a * c;
 
         if (discriminant < 0)
