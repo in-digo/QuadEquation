@@ -66,7 +66,10 @@ public class QuadEquationTests
     [InlineData(1, 1, double.NegativeInfinity)]
     public void Solve_ThrowsArgumentException_WhenCoeffNotCorrect(double a, double b, double c)
     {
+        //Arrange
         var solver = new Solver();
+
+        //Act + Assert
         Assert.Throws<ArgumentException>(() => solver.Solve(a, b, c));
     }
 }
